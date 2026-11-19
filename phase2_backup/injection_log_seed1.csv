@@ -1,0 +1,41 @@
+row,column,class,original_value,corrupted_value
+325,FeeBilled,Numbers stored as text,4054.1,4054.1
+1168,FeeBilled,Numbers stored as text,6257.06,6257.06
+80,FeeBilled,Numbers stored as text,6931.77,6931.77
+628,FeeBilled,Numbers stored as text,5934.33,5934.33
+1268,PolicyAmount,Numbers stored as text,2341923.32,2341923.32
+1238,PolicyAmount,Numbers stored as text,2385149.25,2385149.25
+1741,ClientName,Leading and trailing whitespace,Patel Capital LLC, Patel Capital LLC 
+1929,ClientName,Leading and trailing whitespace,Brooks Holdings LLC, Brooks Holdings LLC 
+665,ClientName,Leading and trailing whitespace,Patel Title Services, Patel Title Services 
+1933,Status,Leading and trailing whitespace,Closed,Closed 
+762,Status,Leading and trailing whitespace,On Hold,On Hold 
+739,OpenDate,Mixed US and ISO dates,2025-06-27,06/27/2025
+674,OpenDate,Mixed US and ISO dates,2026-04-02,04/02/2026
+1915,OpenDate,Mixed US and ISO dates,2026-09-10,09/10/2026
+1236,LastContactDate,Mixed US and ISO dates,2026-12-04,12/04/2026
+1857,LastContactDate,Mixed US and ISO dates,2026-04-29,04/29/2026
+1700,MatterID,Exact duplicate MatterID,M-2026-01699,M-2026-01840
+657,MatterID,Exact duplicate MatterID,M-2026-00656,M-2026-00996
+1654,MatterID,Exact duplicate MatterID,M-2026-01653,M-2026-01360
+1178,Status,Case and punctuation variants in Status,Closed,closed
+1384,Status,Case and punctuation variants in Status,Closed,CLOSED
+1095,Status,Case and punctuation variants in Status,Open,Open-
+1361,Status,Case and punctuation variants in Status,On Hold,On Hold 
+990,FeeBilled,Currency formatted text and bracket negatives,5254.19,"$5,254.19"
+617,FeeBilled,Currency formatted text and bracket negatives,1708.64,"(1,708.64)"
+379,FeeBilled,Currency formatted text and bracket negatives,5234.06,"$5,234.06"
+512,FeeBilled,Invisible characters,2102.98,'2102.98
+449,FeeBilled,Invisible characters,3300.41,'3300.41
+1794,PolicyAmount,Invisible characters,962474.85, 962474.85
+646,MatterID,TOTAL row inside the data range,M-2026-00645,TOTAL
+2002,ClientName,Duplicate client under spelling variant,Caldwell C. Family,Caldwell C. Family L.L.C.
+2003,ClientName,Duplicate client under spelling variant,Morgan Properties Inc,Morgan Properties  Incorporated
+2004,ClientName,Duplicate client under spelling variant,Lennox C. Enterprises,"Lennox C. Enterprises Partners, LLP"
+2005,ClientName,Duplicate client under spelling variant,Morgan C. Holdings,Morgan C. Holdings Corporation
+2006,FeeBilled,Rows appended below the total's range,,2068.54
+2007,FeeBilled,Rows appended below the total's range,,2291.68
+2008,FeeBilled,Rows appended below the total's range,,2758.67
+1662,ClientName,Merged cells,Caldwell D. Insurance,merged 3 rows (B1662:B1664)
+168,Owner,Merged cells,TNC,merged 2 rows (H168:H169)
+749,(rows),Hidden rows,visible,hidden rows 749-753 (5 rows)

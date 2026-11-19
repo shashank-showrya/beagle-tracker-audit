@@ -1,0 +1,11 @@
+Shreya — audit sheet is in this zip. Please counter-sign COMPAT_LOG.md. No need to re-run it.
+
+Excel, Google Sheets, and LibreOffice Calc 26.8.3.1 all FLAG checks 1, 2, 4, and 12 on the sample. Those counts are 2, 1, 2, and 3. Checks 3, 5, 7, 8, 9, 10, and 11 are 0 PASS. Check 6’s count cell reads “no formula, see instructions”.
+
+Excel here is Office 16.0.20527.20150, not Excel 2019. Sheets has no build number. Calc is LibreOffice 26.8.3.1, build 861effc5289d539f15c4c18d1ba8579ffd78728b.
+
+Check 7 uses a text-only test. The brief’s one-line formula flags ordinary numbers. Details are in COMPAT_LOG.md.
+
+The 30 DATA rows are synthetic, with five breaks typed on purpose.
+
+Shashank, 17 November 2026

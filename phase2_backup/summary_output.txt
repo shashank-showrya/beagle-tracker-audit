@@ -1,0 +1,8 @@
+Section 1. Seed, column count, clean/broken row counts, OpenDate range: seed=20261120; columns=14; clean_data_rows=2000; broken_data_rows=2007; OpenDate_range=2025-01-01 to 2026-10-31
+Section 2. Twelve error classes with injected count each and total: Numbers stored as text=6; Leading and trailing whitespace=5; Mixed US and ISO dates=5; Duplicate client under spelling variant=4; Exact duplicate MatterID=3; Merged cells=2; Invisible characters=3; Case and punctuation variants in Status=4; Currency formatted text and bracket negatives=3; Rows appended below the total's range=3; TOTAL row inside the data range=1; Hidden rows=1; total_injected=40
+Section 3. Naive =SUM(J2:J2001) total on broken file: STUB — pending Phase 3 gap run
+Section 4. True FeeBilled total from clean control copy: STUB — pending Phase 3 gap run
+Section 5. Gap totals and per-class attribution plus interaction residual: STUB — pending Phase 3 gap run
+Section 6. Count of rows the naive range does not reach: STUB — pending Phase 3 gap run
+Section 7. Audit sheet result per check (seed 1) from CHECK_VALIDATION: STUB — pending audit formula scoring
+Section 8. Audit sheet result per check (seed 2) after cold run: STUB — pending cold run

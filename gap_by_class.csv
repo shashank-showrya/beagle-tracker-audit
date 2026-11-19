@@ -1,0 +1,14 @@
+error_class,reported_total,actual_total,gap
+Numbers stored as text,8754987.24,8771701.21,16713.97
+Leading and trailing whitespace,8771701.21,8771701.21,0.0
+Mixed US and ISO dates,8771701.21,8771701.21,0.0
+Duplicate client under spelling variant,8771701.21,8771701.21,0.0
+Exact duplicate MatterID,8771701.21,8771701.21,0.0
+Merged cells,8771701.21,8771701.21,0.0
+Invisible characters,8761086.66,8771701.21,10614.55
+Case and punctuation variants in Status,8771701.21,8771701.21,0.0
+Currency formatted text and bracket negatives,8755273.73,8771701.21,16427.48
+Rows appended below the total's range,8771701.21,8771701.21,0.0
+TOTAL row inside the data range,8784201.21,8771701.21,-12500.0
+Hidden rows,8771701.21,8771701.21,0.0
+interaction,8743423.67,8771701.21,-2978.46
