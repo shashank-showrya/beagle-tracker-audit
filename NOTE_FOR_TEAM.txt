@@ -1,0 +1,19 @@
+Team — updated audit sheet is in this zip. Please rerun the Excel validation. I have not changed injection_spec.md or the generator.
+
+Checks 1, 3, 4, and 7 now follow the seed-1 contract. On the clean 2,000-row file those four are 0 PASS. On the broken file they are 6, 5, 4, and 3 FLAG.
+
+Check 1 counts a plain text number in PolicyAmount or FeeBilled. A dollar sign, a bracket, an apostrophe, or a non-breaking space stays on check 7 or 9.
+
+Check 3 counts a slash date in OpenDate, TargetCloseDate, or LastContactDate. An ISO text date such as 2025-06-27 is the clean form and is not a flag.
+
+Check 4 counts a spelling only when another spelling of that client is at least as common. The same name on many matters is not a flag. A one-and-one pair still counts as 2. The broken count of 4 is the four added variant rows.
+
+Check 7 counts an apostrophe or a non-breaking space in PolicyAmount or FeeBilled.
+
+The 30-row sample is unchanged: checks 1, 2, 4, and 12 flag, and the other live checks pass.
+
+Paste into DATA, columns A to N. Do not paste into columns O through T. For the 2,000-row file, set the yellow cell H16 to the last row of your SUM. The sample leaves H16 at 31.
+
+These counts were recalculated in LibreOffice Calc 26.8.3.1. Excel on this machine would not start for a second pass. Your Excel rerun is the sign-off.
+
+Shashank, 19 November 2026

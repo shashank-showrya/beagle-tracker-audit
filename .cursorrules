@@ -1,0 +1,54 @@
+# tracker-audit-12-checks
+A free twelve-check audit sheet for a hand-kept client or matter tracker, plus the published article
+and the script that built the deliberately broken test file. Written for a small business owner in a
+title agency, an insurance agency, a small law firm or a financial advisory practice.
+Python, pandas, openpyxl, matplotlib and the standard library only. The spreadsheet uses only
+functions that ship with Excel 2019 and Google Sheets. No paid services, no paid APIs, no extra
+dependencies without asking.
+## Rules for every change in this repo
+1. Every number traces to a data file.
+No figure appears in prose, in a caption, in alt text or in the video unless it is printed by
+build_tracker.py into summary_output.txt. If a number is not in that file, write [FIGURE NEEDED]
+instead of a value. Never estimate, round up or illustrate with a plausible number.
+2. Say when data is illustrative.
+The tracker in this repo is synthetic and is not a client file. Every one of its 40 defects was
+injected deliberately by script with a fixed seed. Keep the illustrative label in the article,
+the README, injection_spec.md, both chart captions and on screen in the video. The 40 count is a
+property of this file. Never write it, or any per-class count, as a rate found in real
+businesses.
+3. Stay in time, not money.
+The gap between the reported total and the actual total is stated in this file's own units and
+stops there. There is no revenue, commission, loss, cost-of-error or value-at-risk field anywhere
+in this project, not even unused, and no chart axis or caption converts the gap into what an
+error costs a business. If a suggestion reaches for cost or revenue, drop it.
+4. Write about the reader, not about us.
+The subject is the reader's own tracker. No client names, no pricing, no testimonials, no Beagle
+metrics, no throughput or headcount figures, no capacity or delivery promises. The audit sheet
+recommends no purchase anywhere.
+5. Your name, your call.
+Assets carry builder names. G M Shashank Showrya and Shreya Badakundri must not be quoted by
+anyone else; they write and narrate their own work only. Do not alter credits, bylines or an end
+card, do not put words in anyone's mouth, and do not mark an asset approved.
+## Spreadsheet conventions
+- Excel 2019 compatibility is a hard constraint. Do not use XLOOKUP, UNIQUE, FILTER, SORT, LET,
+LAMBDA, TEXTSPLIT, TRIMRANGE or any spilled dynamic array. They return #NAME? in Excel 2019.
+- Allowed: SUMPRODUCT, COUNTIF, COUNTIFS, ISTEXT, ISNUMBER, SEARCH, TRIM, CLEAN, SUBSTITUTE, EXACT,
+UPPER, PROPER, SUBTOTAL, AGGREGATE, TEXTJOIN, COUNTA, MIN, MAX, IFERROR.
+- Every check formula must return the same result in Google Sheets. Sheets-only conveniences
+(QUERY, REGEXMATCH, ARRAYFORMULA) may appear as an optional alternative column, never as the
+primary instruction.
+- Fixed ranges to row 5000 with a COUNTA guard, so a reader with 300 rows gets no false flags.
+- If a check is cut, retitle the sheet, the article and the video to the number that actually works.
+## Script conventions
+- Fixed seed, random.seed(20261120), committed. Output must be reproducible on another machine.
+- Every injection count lives in a module-level CONFIG dict with a comment saying why.
+No magic numbers inline.
+- The clean control copy and the broken copy are generated from the same base rows in one run.
+- gap_by_class.csv is computed by re-injecting one class at a time onto a fresh clean copy, never by
+subtracting classes from the fully broken file. The unattributable remainder is a row labelled
+interaction.
+- One chart script produces one PNG: chart_a_counts.py to chart_a.png, chart_b_gap.py to
+chart_b.png. Both PNGs at 2x. Captions sit below the axes, not as a title inside the image.
+- No hard-coded absolute paths. Paths are relative to the repo root.
+- When you add or assume a dependency, a Python version or a directory, add it to README.md in the
+same change.

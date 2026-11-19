@@ -1,0 +1,267 @@
+{
+  "run_at": "2026-11-17T13:23:16.124204Z",
+  "auditor": "Phase 2 automated + manual review (Suhas GS)",
+  "backup_dir": "C:\\linkedin\\phase2_backup",
+  "sections": {
+    "1_clean_control": [
+      {
+        "test": "Clean data row count",
+        "expected": "2000",
+        "actual": "2000",
+        "status": "PASS",
+        "evidence": "pd.read_excel rows=2000"
+      },
+      {
+        "test": "Clean column count",
+        "expected": "14",
+        "actual": "14",
+        "status": "PASS",
+        "evidence": "columns=['MatterID', 'ClientName', 'ClientType', 'MatterType', 'OpenDate', 'TargetCloseDate', 'Status', 'Owner', 'PolicyAmount', 'FeeBilled', 'FeeCollected', 'InvoiceCount', 'LastContactDate', 'Notes']"
+      },
+      {
+        "test": "Clean column names match spec",
+        "expected": "14 named columns in order",
+        "actual": "match",
+        "status": "PASS",
+        "evidence": "expected ['MatterID', 'ClientName', 'ClientType', 'MatterType', 'OpenDate', 'TargetCloseDate', 'Status', 'Owner', 'PolicyAmount', 'FeeBilled', 'FeeCollected', 'InvoiceCount', 'LastContactDate', 'Notes']"
+      },
+      {
+        "test": "FeeCollected <= FeeBilled (all rows)",
+        "expected": "0 violations",
+        "actual": "0 violations",
+        "status": "PASS",
+        "evidence": "pandas comparison on columns K,J"
+      },
+      {
+        "test": "MatterID format M-2026-#####",
+        "expected": "all valid",
+        "actual": "all valid",
+        "status": "PASS",
+        "evidence": "regex on MatterID column"
+      },
+      {
+        "test": "Clean dates ISO YYYY-MM-DD",
+        "expected": "OpenDate, TargetCloseDate, LastContactDate all ISO",
+        "actual": "open=True, target=True, last=True",
+        "status": "PASS",
+        "evidence": "no US-format dates in clean"
+      },
+      {
+        "test": "OpenDate range",
+        "expected": "2025-01-01 .. 2026-10-31",
+        "actual": "2025-01-01 .. 2026-10-31",
+        "status": "PASS",
+        "evidence": "pandas to_datetime min/max"
+      },
+      {
+        "test": "ClientType values",
+        "expected": "{Individual, Entity}",
+        "actual": "{'Individual', 'Entity'}",
+        "status": "PASS",
+        "evidence": "unique={'Individual', 'Entity'}"
+      },
+      {
+        "test": "MatterType values",
+        "expected": "subset of spec enums",
+        "actual": "{'Title Search', 'Refinance', 'Endorsement', 'Closing', 'Claim Review', 'Policy Issue'}",
+        "status": "PASS",
+        "evidence": "allowed=['Title Search', 'Policy Issue', 'Closing', 'Refinance', 'Endorsement', 'Claim Review']"
+      },
+      {
+        "test": "Status values (canonical)",
+        "expected": "subset of ['Open', 'Pending', 'Closed', 'On Hold']",
+        "actual": "{'Open', 'Pending', 'Closed', 'On Hold'}",
+        "status": "PASS",
+        "evidence": ""
+      },
+      {
+        "test": "Owner initials",
+        "expected": "subset of ['JSP', 'MRK', 'ALW', 'TNC', 'BDH', 'KLS']",
+        "actual": "{'TNC', 'JSP', 'MRK', 'ALW', 'BDH', 'KLS'}",
+        "status": "PASS",
+        "evidence": ""
+      },
+      {
+        "test": "InvoiceCount range 1-4",
+        "expected": "all in 1..4",
+        "actual": "min=1 max=4",
+        "status": "PASS",
+        "evidence": ""
+      },
+      {
+        "test": "Required fields non-blank",
+        "expected": "0 blank in MatterID, ClientName, OpenDate, FeeBilled",
+        "actual": "0 blank cells",
+        "status": "PASS",
+        "evidence": "checked ['MatterID', 'ClientName', 'OpenDate', 'FeeBilled']"
+      },
+      {
+        "test": "Clean matches seed-regenerated base (no injections)",
+        "expected": "dataframe equal (Notes blank normalized)",
+        "actual": "equal",
+        "status": "PASS",
+        "evidence": "build_tracker.generate_base_rows + pd.read_excel fillna"
+      },
+      {
+        "test": "TRACKER_AUDIT_12CHECKS twelve checks on clean (Shashank formulas)",
+        "expected": "Count=0 FLAG for all 12 on clean control",
+        "actual": "All 12 AUDIT Count/verdict cells are STUB (stub_count=12/12)",
+        "status": "BLOCKED",
+        "evidence": "TRACKER_AUDIT_12CHECKS.xlsx AUDIT tab rows 2-13; not modified (teammate file)"
+      },
+      {
+        "test": "[Supplementary] Check 1 heuristic on clean \u2014 text amounts",
+        "expected": "0",
+        "actual": "0",
+        "status": "PASS",
+        "evidence": "openpyxl data_type/number_format on I,J; does not replace AUDIT sheet"
+      },
+      {
+        "test": "[Supplementary] Check 2 heuristic \u2014 trim whitespace",
+        "expected": "0",
+        "actual": "0",
+        "status": "PASS",
+        "evidence": "pandas strip compare"
+      },
+      {
+        "test": "[Supplementary] Check 3 heuristic \u2014 US dates",
+        "expected": "0",
+        "actual": "0",
+        "status": "PASS",
+        "evidence": ""
+      },
+      {
+        "test": "[Supplementary] Check 5 heuristic \u2014 duplicate MatterID",
+        "expected": "0",
+        "actual": "0",
+        "status": "PASS",
+        "evidence": ""
+      },
+      {
+        "test": "[Supplementary] Check 11 heuristic \u2014 TOTAL row",
+        "expected": "0",
+        "actual": "0",
+        "status": "PASS",
+        "evidence": ""
+      },
+      {
+        "test": "[Supplementary] Checks 6/12 heuristic \u2014 merges/hidden",
+        "expected": "0 merges, 0 hidden",
+        "actual": "merges=0, hidden=0",
+        "status": "PASS",
+        "evidence": "openpyxl"
+      }
+    ],
+    "2_injection_log": [
+      {
+        "test": "Broken data row count",
+        "expected": "2007",
+        "actual": "2007",
+        "status": "PASS",
+        "evidence": "pd.read_excel tracker_broken_seed1.xlsx"
+      },
+      {
+        "test": "Log row count",
+        "expected": "40",
+        "actual": "40",
+        "status": "PASS",
+        "evidence": "C:\\linkedin\\injection_log_seed1.csv"
+      },
+      {
+        "test": "Log columns",
+        "expected": "['row', 'column', 'class', 'original_value', 'corrupted_value']",
+        "actual": "['row', 'column', 'class', 'original_value', 'corrupted_value']",
+        "status": "PASS",
+        "evidence": ""
+      },
+      {
+        "test": "Class counts vs CONFIG/SPEC",
+        "expected": "12 classes match",
+        "actual": "all match",
+        "status": "PASS",
+        "evidence": "{\"Numbers stored as text\": 6, \"Leading and trailing whitespace\": 5, \"Mixed US and ISO dates\": 5, \"Exact duplicate MatterID\": 3, \"Case and punctuation variants in Status\": 4, \"Currency formatted text and bracket negatives\": 3, \"Invisible characters\": 3, \"TOTAL row inside the data range\": 1, \"Duplicate client under spelling variant\": 4, \"Rows appended below the total's range\": 3, \"Merged cells\": 2, \"Hidden rows\": 1}"
+      },
+      {
+        "test": "Total injected",
+        "expected": "40",
+        "actual": "40",
+        "status": "PASS",
+        "evidence": ""
+      },
+      {
+        "test": "No duplicate (row, column, class) keys",
+        "expected": "0 duplicates",
+        "actual": "0 duplicate keys",
+        "status": "PASS",
+        "evidence": ""
+      },
+      {
+        "test": "Log values vs broken workbook cells",
+        "expected": "40/40 entries consistent",
+        "actual": "0 issues",
+        "status": "PASS",
+        "evidence": ""
+      },
+      {
+        "test": "Numbers-as-text column split (spec note)",
+        "expected": "FeeBilled=4, PolicyAmount=2",
+        "actual": "FeeBilled=4, PolicyAmount=2",
+        "status": "PASS",
+        "evidence": "injection_spec.md check 1 notes"
+      }
+    ],
+    "3_reproducibility": [
+      {
+        "test": "injection_log_seed1.csv byte-identical (spec)",
+        "expected": "SHA-256 unchanged vs phase2_backup/",
+        "actual": "match",
+        "status": "PASS",
+        "evidence": "before=4c48b998aa210cca3a415e4889341b3492c0ba6d2e29a8b62dbf57a228f47b7c; after=4c48b998aa210cca3a415e4889341b3492c0ba6d2e29a8b62dbf57a228f47b7c"
+      },
+      {
+        "test": "Workbook cell data equivalent after rebuild",
+        "expected": "clean and broken DataFrames equal (fillna)",
+        "actual": "clean=True, broken=True",
+        "status": "PASS",
+        "evidence": "pandas read_excel comparison"
+      },
+      {
+        "test": "XLSX container byte-identical (informational)",
+        "expected": "may differ (ZIP timestamps)",
+        "actual": "{'tracker_clean_seed1.xlsx': False, 'tracker_broken_seed1.xlsx': False}",
+        "status": "PASS",
+        "evidence": "Not required by injection_spec; logged for transparency"
+      }
+    ],
+    "4_spec_consistency": [
+      {
+        "test": "CONFIG vs injection_spec.md class counts",
+        "expected": "12 classes identical",
+        "actual": "match",
+        "status": "PASS",
+        "evidence": "build_tracker.py CONFIG + injection_spec.md table"
+      },
+      {
+        "test": "Seed",
+        "expected": "20261120",
+        "actual": "20261120",
+        "status": "PASS",
+        "evidence": "CONFIG['SEED']"
+      },
+      {
+        "test": "Base / broken row counts in spec",
+        "expected": "2000 clean, 2007 broken (+4 variants +3 appended)",
+        "actual": "BASE_DATA_ROWS=2000; variant=4; appended=3",
+        "status": "PASS",
+        "evidence": "CONFIG arithmetic"
+      },
+      {
+        "test": "Synthetic / illustrative labeling",
+        "expected": "injection_spec states synthetic, seed, not a rate",
+        "actual": "present in injection_spec.md header",
+        "status": "PASS",
+        "evidence": "injection_spec.md lines 5-9, 57"
+      }
+    ]
+  }
+}
